@@ -1,0 +1,516 @@
+Program.Sub.ScreenSU.Start
+gui.fTime..create
+gui.fTime..caption("Time")
+gui.fTime..size(1360,6460)
+gui.fTime..minx(0)
+gui.fTime..miny(0)
+gui.fTime..position(0,0)
+gui.fTime..event(unload,Unload)
+gui.fTime..alwaysontop(True)
+gui.fTime..fontname("Arial")
+gui.fTime..fontsize(8)
+gui.fTime..forecolor(0)
+gui.fTime..fontstyle(,,,,)
+gui.fTime..BackColor(-2147483633)
+gui.fTime..controlbox(True)
+gui.fTime..maxbutton(False)
+gui.fTime..minbutton(False)
+gui.fTime..mousepointer(0)
+gui.fTime..moveable(True)
+gui.fTime..sizeable(False)
+gui.fTime..ShowInTaskBar(True)
+gui.fTime..titlebar(True)
+gui.fTime.lblSun.create(label,"Sunday",True,895,250,1,160,3745,True,0,Arial,8,-2147483633,0)
+gui.fTime.lblSun.defaultvalue("")
+gui.fTime.lblSun.controlgroup(0)
+gui.fTime.lblSat.create(label,"Saturday",True,900,255,1,145,3125,True,0,Arial,8,-2147483633,0)
+gui.fTime.lblSat.defaultvalue("")
+gui.fTime.lblSat.controlgroup(0)
+gui.fTime.lblFri.create(label,"Friday",True,900,255,1,160,2515,True,0,Arial,8,-2147483633,0)
+gui.fTime.lblFri.defaultvalue("")
+gui.fTime.lblFri.controlgroup(0)
+gui.fTime.lblThur.create(label,"Thursday",True,900,255,1,145,1900,True,0,Arial,8,-2147483633,0)
+gui.fTime.lblThur.defaultvalue("")
+gui.fTime.lblThur.controlgroup(0)
+gui.fTime.lblWed.create(label,"Wednesday",True,985,250,1,145,1300,True,0,Arial,8,-2147483633,0)
+gui.fTime.lblWed.defaultvalue("")
+gui.fTime.lblWed.controlgroup(0)
+gui.fTime.lblTues.create(label,"Tuesday",True,900,255,1,150,700,True,0,Arial,8,-2147483633,0)
+gui.fTime.lblTues.defaultvalue("")
+gui.fTime.lblTues.controlgroup(0)
+gui.fTime.lblMon.create(label,"Monday",True,900,255,1,145,100,True,0,Arial,8,-2147483633,0)
+gui.fTime.lblMon.defaultvalue("")
+gui.fTime.lblMon.controlgroup(0)
+gui.fTime.txtMon.create(textbox,"",True,855,300,0,145,300,False,0,Arial,8,-2147483643,1)
+gui.fTime.txtMon.defaultvalue("")
+gui.fTime.txtMon.controlgroup(0)
+gui.fTime.txtTues.create(textbox,"",True,885,300,0,145,900,False,0,Arial,8,-2147483643,1)
+gui.fTime.txtTues.defaultvalue("")
+gui.fTime.txtTues.controlgroup(0)
+gui.fTime.txtWed.create(textbox,"",True,885,300,0,145,1495,False,0,Arial,8,-2147483643,1)
+gui.fTime.txtWed.defaultvalue("")
+gui.fTime.txtWed.controlgroup(0)
+gui.fTime.txtThur.create(textbox,"",True,885,300,0,145,2100,False,0,Arial,8,-2147483643,1)
+gui.fTime.txtThur.defaultvalue("")
+gui.fTime.txtThur.controlgroup(0)
+gui.fTime.txtFri.create(textbox,"",True,885,300,0,145,2715,False,0,Arial,8,-2147483643,1)
+gui.fTime.txtFri.defaultvalue("")
+gui.fTime.txtFri.controlgroup(0)
+gui.fTime.txtSat.create(textbox,"",True,885,300,0,145,3330,False,0,Arial,8,-2147483643,1)
+gui.fTime.txtSat.defaultvalue("")
+gui.fTime.txtSat.controlgroup(0)
+gui.fTime.txtSun.create(textbox,"",True,885,300,0,145,3955,False,0,Arial,8,-2147483643,1)
+gui.fTime.txtSun.defaultvalue("")
+gui.fTime.txtSun.controlgroup(0)
+gui.fTime.lblTotal.create(label,"Total",True,825,255,1,145,4360,True,0,Arial,8,-2147483633,0)
+gui.fTime.lblTotal.defaultvalue("")
+gui.fTime.lblTotal.controlgroup(0)
+gui.fTime.txtTotal.create(textbox,"",True,885,300,0,145,4560,False,0,Arial,8,-2147483643,1)
+gui.fTime.txtTotal.defaultvalue("")
+gui.fTime.txtTotal.controlgroup(0)
+gui.fTime.cmdOk.create(button)
+gui.fTime.cmdOk.caption("Done")
+gui.fTime.cmdOk.visible(True)
+gui.fTime.cmdOk.size(850,370)
+gui.fTime.cmdOk.zorder(0)
+gui.fTime.cmdOk.position(145,5560)
+gui.fTime.cmdOk.enabled(True)
+gui.fTime.cmdOk.fontname("Arial")
+gui.fTime.cmdOk.fontsize(8)
+gui.fTime.cmdOk.event(click,Unload)
+gui.fTime.cmdOk.defaultvalue("")
+gui.fTime.cmdOk.controlgroup(0)
+gui.fTime.chkUnPaid.create(checkbox)
+gui.fTime.chkUnPaid.caption("Inc. Unpaid")
+gui.fTime.chkUnPaid.visible(True)
+gui.fTime.chkUnPaid.size(1150,355)
+gui.fTime.chkUnPaid.zorder(0)
+gui.fTime.chkUnPaid.position(145,5035)
+gui.fTime.chkUnPaid.enabled(True)
+gui.fTime.chkUnPaid.alignment(0)
+gui.fTime.chkUnPaid.fontname("Arial")
+gui.fTime.chkUnPaid.fontsize(7)
+gui.fTime.chkUnPaid.event(click,chkUnPaid_Click)
+gui.fTime.chkUnPaid.defaultvalue("")
+gui.fTime.chkUnPaid.controlgroup(0)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.gHours.Declare(String)
+Variable.Global.gMin.Declare(String)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Time Totals for Week Mon-Sun
+F.Intrinsic.Control.If(V.Caller.Hook,=,15710)
+	V.Passed.000016.Set("Time Total")
+F.Intrinsic.Control.ElseIf(V.Caller.Hook,=,15760)
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+	F.Intrinsic.Control.CallSub(Load)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3503_Emp_Time_Total_CERT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.Main.End
+
+Program.Sub.Load.Start
+Function.Intrinsic.Control.SetErrorHandler("Load_Err")
+Function.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.dDate.Declare(Date)
+V.Local.iDay.Declare(Long)
+V.Local.sTime.Declare(String)
+V.Local.sTotH.Declare(String)
+V.Local.sTotM.Declare(String)
+
+F.Intrinsic.Control.If(V.Passed.009993,=,"")
+	F.Intrinsic.Control.CallSub(Unload)
+F.Intrinsic.Control.Else
+	'gets current day of the week
+	F.Intrinsic.Date.Weekday(V.Ambient.Date,V.Local.iDay)
+	'day of the week
+	Function.Intrinsic.Control.SelectCase(V.Local.iDay)
+		'sunday
+		Function.Intrinsic.Control.Case(1)
+			V.Local.dDate.Set(V.Ambient.Date)
+			'sunday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtSun.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-1,V.Ambient.Date,V.Local.dDate)
+			'saturday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtSat.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-2,V.Ambient.Date,V.Local.dDate)
+			'friday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtFri.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-3,V.Ambient.Date,V.Local.dDate)
+			'thursday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtThur.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-4,V.Ambient.Date,V.Local.dDate)
+			'wednesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtWed.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-5,V.Ambient.Date,V.Local.dDate)
+			'tuesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtTues.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-6,V.Ambient.Date,V.Local.dDate)
+			'monday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtMon.Text(V.Local.sTime)
+		'monday
+		Function.Intrinsic.Control.Case(2)
+			V.Local.dDate.Set(V.Ambient.Date)
+			'monday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtMon.Text(V.Local.sTime)
+			'tuesday
+			Gui.fTime.txtTues.Text("0:0")
+			'wednesday
+			Gui.fTime.txtWed.Text("0:0")
+			'thursday
+			Gui.fTime.txtThur.Text("0:0")
+			'friday
+			Gui.fTime.txtFri.Text("0:0")
+			'saturday
+			Gui.fTime.txtSat.Text("0:0")
+			'sunday
+			Gui.fTime.txtSun.Text("0:0")
+		'tuesday
+		Function.Intrinsic.Control.Case(3)
+			V.Local.dDate.Set(V.Ambient.Date)
+			'tuesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtTues.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-1,V.Ambient.Date,V.Local.dDate)
+			'monday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtMon.Text(V.Local.sTime)
+			'wednesday
+			Gui.fTime.txtWed.Text("0:0")
+			'thursday
+			Gui.fTime.txtThur.Text("0:0")
+			'friday
+			Gui.fTime.txtFri.Text("0:0")
+			'saturday
+			Gui.fTime.txtSat.Text("0:0")
+			'sunday
+			Gui.fTime.txtSun.Text("0:0")
+		'wednesday
+		Function.Intrinsic.Control.Case(4)
+			V.Local.dDate.Set(V.Ambient.Date)
+			'wednesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtWed.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-1,V.Ambient.Date,V.Local.dDate)
+			'tuesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtTues.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-2,V.Ambient.Date,V.Local.dDate)
+			'monday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtMon.Text(V.Local.sTime)
+			'thursday
+			Gui.fTime.txtThur.Text("0:0")
+			'friday
+			Gui.fTime.txtFri.Text("0:0")
+			'saturday
+			Gui.fTime.txtSat.Text("0:0")
+			'sunday
+			Gui.fTime.txtSun.Text("0:0")
+		'thursday
+		Function.Intrinsic.Control.Case(5)
+			V.Local.dDate.Set(V.Ambient.Date)
+			'thursday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtThur.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-1,V.Ambient.Date,V.Local.dDate)
+			'wednesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtWed.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-2,V.Ambient.Date,V.Local.dDate)
+			'tuesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtTues.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-3,V.Ambient.Date,V.Local.dDate)
+			'monday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtMon.Text(V.Local.sTime)
+			'friday
+			Gui.fTime.txtFri.Text("0:0")
+			'saturday
+			Gui.fTime.txtSat.Text("0:0")
+			'sunday
+			Gui.fTime.txtSun.Text("0:0")
+		'friday
+		Function.Intrinsic.Control.Case(6)
+			V.Local.dDate.Set(V.Ambient.Date)
+			'friday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtFri.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-1,V.Ambient.Date,V.Local.dDate)
+			'thursday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtThur.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-2,V.Ambient.Date,V.Local.dDate)
+			'wednesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtWed.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-3,V.Ambient.Date,V.Local.dDate)
+			'tuesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtTues.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-4,V.Ambient.Date,V.Local.dDate)
+			'monday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtMon.Text(V.Local.sTime)
+			'saturday
+			Gui.fTime.txtSat.Text("0:0")
+			'sunday
+			Gui.fTime.txtSun.Text("0:0")
+		'saturday
+		Function.Intrinsic.Control.Case(7)
+			V.Local.dDate.Set(V.Ambient.Date)
+			'saturday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtSat.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-1,V.Ambient.Date,V.Local.dDate)
+			'friday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtFri.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-2,V.Ambient.Date,V.Local.dDate)
+			'thursday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtThur.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-3,V.Ambient.Date,V.Local.dDate)
+			'wednesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtWed.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-4,V.Ambient.Date,V.Local.dDate)
+			'tuesday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtTues.Text(V.Local.sTime)
+			F.Intrinsic.Date.DateAdd("D",-5,V.Ambient.Date,V.Local.dDate)
+			'monday
+			F.Intrinsic.Control.CallSub(Time,"Date",V.Local.dDate)
+			Function.Intrinsic.String.Build("{0}:{1}",V.Global.gHours,V.Global.gMin,V.Local.sTime)
+			F.Intrinsic.Math.Add(V.Global.gHours,V.Local.sTotH,V.Local.sTotH)
+			F.Intrinsic.Math.Add(V.Global.gMin,V.Local.sTotM,V.Local.sTotM)
+			Gui.fTime.txtMon.Text(V.Local.sTime)
+			'sunday
+			Gui.fTime.txtSun.Text("0:0")
+	Function.Intrinsic.Control.EndSelect
+
+	'converts the extra minutes into hours
+	F.Intrinsic.Control.DoUntil(V.Local.sTotM,<=,59)
+		F.Intrinsic.Math.Sub(V.Local.sTotM,60,V.Local.sTotM)
+		F.Intrinsic.Math.Add(V.Local.sTotH,1,V.Local.sTotH)
+	F.Intrinsic.Control.Loop
+	Function.Intrinsic.String.Build("{0}:{1}",V.Local.sTotH,V.Local.sTotM,V.Local.sTime)
+	'total time
+	Gui.fTime.txtTotal.Text(V.Local.sTime)
+	Gui.fTime..Show
+F.Intrinsic.Control.EndIf
+
+Function.Intrinsic.Control.ExitSub
+
+Function.Intrinsic.Control.Label("Load_Err")
+Function.Intrinsic.Control.If(Variable.Ambient.ErrorNumber,"<>",0)
+	Function.Intrinsic.String.Concat("Error Occurred ",Variable.Ambient.ErrorNumber," with description ",Variable.Ambient.ErrorDescription,Variable.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Load.End
+
+Program.Sub.Time.Start
+Function.Intrinsic.Control.SetErrorHandler("Sub_Err")
+Function.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.dDate.Declare(Date)
+
+'gets the hours and minutes from the selected date for the employee
+V.Local.dDate.Set(V.Args.Date)
+Function.Intrinsic.Control.If(V.Screen.fTime!chkUnPaid.Value,=,1)
+	Function.Intrinsic.String.Build("SELECT EMPLOYEE, CHARGE_DATE, HOURS_HH, HOURS_MM from V_TIME_ATTENDANCE where CHARGE_DATE = '{0}' and EMPLOYEE = '{1}' ",V.Local.dDate.PervasiveDate,V.Passed.009993,V.Local.sSql)
+Function.Intrinsic.Control.Else
+	Function.Intrinsic.String.Build("SELECT EMPLOYEE, CHARGE_DATE, HOURS_HH, HOURS_MM from V_TIME_ATTENDANCE where CHARGE_DATE = '{0}' and EMPLOYEE = '{1}' AND ((REC_TYPE='A' AND PAID<>'N') OR (REC_TYPE='T')) ",V.Local.dDate.PervasiveDate,V.Passed.009993,V.Local.sSql)
+Function.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSql)
+V.Global.gHours.Set(0)
+V.Global.gMin.Set(0)
+'adds all of the applied time for the charged date
+F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,"True")
+	F.Intrinsic.Math.Add(V.ODBC.con!rst.FieldValLTrim!HOURS_HH,V.Global.gHours,V.Global.gHours)
+	F.Intrinsic.Math.Add(V.ODBC.con!rst.FieldValLTrim!HOURS_MM,V.Global.gMin,V.Global.gMin)
+	F.ODBC.con!rst.MoveNext
+F.Intrinsic.Control.Loop
+'converts the extra minutes to hours
+F.Intrinsic.Control.DoUntil(V.Global.gMin,<=,59)
+	F.Intrinsic.Math.Sub(V.Global.gMin,60,V.Global.gMin)
+	F.Intrinsic.Math.Add(V.Global.gHours,1,V.Global.gHours)
+F.Intrinsic.Control.Loop
+F.ODBC.con!rst.Close
+
+Function.Intrinsic.Control.ExitSub
+
+Function.Intrinsic.Control.Label("Sub_Err")
+Function.Intrinsic.Control.If(Variable.Ambient.ErrorNumber,"<>",0)
+	Function.Intrinsic.String.Concat("Error Occurred ",Variable.Ambient.ErrorNumber," with description ",Variable.Ambient.ErrorDescription,Variable.Local.sError)
+	Function.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Time.End
+
+Program.Sub.chkUnPaid_Click.Start
+F.Intrinsic.Control.SetErrorHandler("chkUnPaid_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Function.Intrinsic.Control.CallSub(Load)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("chkUnPaid_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3503_Emp_Time_Total_CERT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	Function.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.chkUnPaid_Click.End
+
+Program.Sub.Unload.Start
+F.Intrinsic.Control.SetErrorHandler("Unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3503_Emp_Time_Total_CERT.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Unload.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_Emp_Time_Total_CERT$}$Strider$}$10/6/2015
+${$1$}$$}$$}$1$}$15760$}$OLS001-PB-SCRIPT-1-HOOK (On-line GUI)$}$10/6/2015 4:14:04 PM$}$(Program: OLG002; Screen: OLS001)
+
+${$1$}$$}$$}$0$}$15710$}$OLS001-POPULATE-HOOK (On-line GUI)$}$10/6/2015 4:13:01 PM$}$(Program: OLG002; Screen: OLS001)
+
+${$3$}$0$}$$}$-1$}$-1$}$$}$1/1/1900$}$Calculate time totals for each day of current week and show total for week so far. Monday-Sunday is the current week setup.
+Program.Sub.Comments.End
+
